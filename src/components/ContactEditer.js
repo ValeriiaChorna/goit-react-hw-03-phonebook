@@ -35,6 +35,7 @@ export default class ContactEditer extends Component {
               value={name}
               name="name"
               onChange={this.handleChange}
+              required
             ></input>
           </label>
           <label>
@@ -44,6 +45,7 @@ export default class ContactEditer extends Component {
               value={number}
               name="number"
               onChange={this.handleChange}
+              required
             ></input>
           </label>
 
