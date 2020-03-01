@@ -30,12 +30,13 @@ class App extends Component {
   addContact = newContact => {
     const { name, number } = newContact;
     const { contacts } = this.state;
+    const doesExistContact = contacts.some(contact => contact.name === name);
     const contact = {
       id: uuid.v4(),
       name,
       number,
     };
-    if (contacts.some(contact => contact.name === name)) {
+    if (doesExistContact) {
       alert(`${name} is allready exist in contacts.`);
       return;
     }
@@ -73,7 +74,7 @@ class App extends Component {
       <Layout>
         <h1>Phonebook</h1>
         <ContactEditer onAddContact={this.addContact} />
-        <h2>Contacts</h2>
+        {contacts.length > 0 && <h2>Contacts</h2>}
         {contacts.length > 1 && (
           <div>
             <h3>Find contact by name</h3>
